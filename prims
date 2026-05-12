@@ -25,6 +25,19 @@ def prims(graph, V):
 
     print("Total Cost =", total_cost)
 
+# User Input
+V = int(input("Enter number of vertices: "))
+
+graph = []
+
+print("Enter adjacency matrix row by row:")
+
+for i in range(V):
+    row = list(map(int, input().split()))
+    graph.append(row)
+
+prims(graph, V)
+
 # Example graph (Adjacency Matrix)
 graph = [
     [0, 2, 0, 6, 0],
