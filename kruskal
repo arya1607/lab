@@ -1,0 +1,37 @@
+def find(parent, i):
+    if parent[i] != i:
+        parent[i] = find(parent, parent[i])
+    return parent[i]
+
+def union(parent, x, y):
+    parent[find(parent, x)] = find(parent, y)
+
+def kruskal(edges, V):
+    edges.sort(key=lambda x: x[2])
+
+    parent = [i for i in range(V)]
+    total = 0
+
+    print("Edge \tWeight")
+
+    for u, v, w in edges:
+        if find(parent, u) != find(parent, v):
+            union(parent, u, v)
+            print(f"{u} - {v}\t{w}")
+            total += w
+
+    print("Total Cost =", total)
+
+# User Input
+V = int(input("Enter number of vertices: "))
+E = int(input("Enter number of edges: "))
+
+edges = []
+
+print("Enter edges (u v weight):")
+
+for _ in range(E):
+    u, v, w = map(int, input().split())
+    edges.append((u, v, w))
+
+kruskal(edges, V)
