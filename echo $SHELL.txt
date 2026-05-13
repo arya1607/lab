@@ -1,0 +1,15 @@
+echo $SHELL
+nano ~/.bashrc
+export PATH=&quot;/home/student/DSBDAL/spark-3.5.1-bin-hadoop3/bin:$PATH&quot;
+
+source ~/.bashrc
+echo $PATH
+spark-shell
+
+val inputfile = sc.textFile("/home/student/DSBDAL/input.txt&quot;")
+1)).reduceByKey(_+_);
+counts.toDebugString
+counts.cache()
+counts.saveAsTextFile(&quot;output&quot;)
+
+
