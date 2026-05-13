@@ -1,21 +1,21 @@
 from collections import deque
 
-def bfs(graph, start):
-    visited = set()
-    queue = deque([start])
+def bfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
 
-    print("BFS Traversal:", end=" ")
+    queue = deque([start])
+    visited.add(start)
 
     while queue:
         node = queue.popleft()
+        print(node, end=" ")
 
-        if node not in visited:
-            print(node, end=" ")
-            visited.add(node)
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                visited.add(neighbour)
+                bfs(graph, neighbour, visited)
 
-            for neighbour in graph[node]:
-                if neighbour not in visited:
-                    queue.append(neighbour)
 
 # Input graph from user
 graph = {}
@@ -29,4 +29,5 @@ for i in range(n):
 
 start = input("Enter starting node: ")
 
+print("BFS Traversal:", end=" ")
 bfs(graph, start)
