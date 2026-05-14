@@ -1,15 +1,15 @@
 echo $SHELL
 nano ~/.bashrc
-export PATH=&quot;/home/student/DSBDAL/spark-3.5.1-bin-hadoop3/bin:$PATH&quot;
+export PATH="/home/student/DSBDAL/spark-3.5.1-bin-hadoop3/bin:$PATH"
 
 source ~/.bashrc
 echo $PATH
 spark-shell
 
-val inputfile = sc.textFile("/home/student/DSBDAL/input.txt&quot;")
+val inputfile = sc.textFile("/home/student/DSBDAL/input.txt")
+val counts = inputfile.flatMap(line => line.split("")).map(word => (word,
 1)).reduceByKey(_+_);
 counts.toDebugString
 counts.cache()
-counts.saveAsTextFile(&quot;output&quot;)
-
+counts.saveAsTextFile("output")
 
